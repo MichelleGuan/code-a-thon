@@ -7,8 +7,7 @@ const dev = Boolean(process.env.WEBPACK_SERVE)
 
 module.exports = {
     entry: './src/index.js',
-    devtool: dev ? 'cheap-module-eval-source-map' : 'hidden-source-map',
-    mode: dev ? 'development' : 'production',
+    mode:  'development',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),

@@ -1,16 +1,22 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const history = require('connect-history-api-fallback')
+const convert = require('koa-connect')
+
+const dev = Boolean(process.env.WEBPACK_SERVE)
 
 module.exports = {
     entry: './src/index.js',
+    devtool: dev ? 'cheap-module-eval-source-map' : 'hidden-source-map',
+    mode: dev ? 'development' : 'production',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        port: 9000
-    },
+    	historyApiFallback: true, 
+	},
     module: {
         rules: [
             {
@@ -39,10 +45,7 @@ module.exports = {
             {
                 test: /\.(html)$/,
                 use: {
-                    loader: 'html-loader',
-                    options: {
-                        attrs: [':data-src']
-                    }
+                    loader: 'html-loader'
                 }
             },
             {
@@ -58,7 +61,29 @@ module.exports = {
             {
                 test: /\.svg$/,
                 loader: 'svg-inline-loader'
-            }
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
+                use: [
+                  {
+                    loader: 'url-loader'
+                  }
+                ]
+              }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+          template: './src/index.html',
+          chunksSortMode: 'none'
+        })
+      ]
 };
+if (dev) {
+    module.exports.serve = {
+      port: 8080,
+      add: app => {
+        app.use(convert(history()))
+      }
+    }
+  }

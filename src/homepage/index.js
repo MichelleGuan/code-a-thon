@@ -15,5 +15,8 @@ export default class {
         container.querySelector('.d3_demo3').addEventListener('click', () => {
             router.go('/d3demo3')
         })
+        container.querySelector('.earth').addEventListener('click', () => {
+            router.go('/earth')
+        })
     }
 }

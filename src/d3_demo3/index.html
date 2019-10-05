@@ -1,8 +1,75 @@
-
-<button type="button" onclick="addTask()">Add Task</button>
+<!-- <button type="button" onclick="addTask()">Add Task</button>
 <button type="button" onclick="removeTask()">Remove Task</button>
 <button type="button" onclick="changeTimeDomain('1hr')">1 HR</button>
 <button type="button" onclick="changeTimeDomain('3hr')">3 HR</button>
 <button type="button" onclick="changeTimeDomain('6hr')">6 HR</button>
     <button type="button" onclick="changeTimeDomain('1day')">1 DAY</button>
-    <button type="button" onclick="changeTimeDomain('1week')">1 WEEK</button>
+    <button type="button" onclick="changeTimeDomain('1week')">1 WEEK</button> -->
+
+<style>
+    /* @import url(./style.scss); */
+    #map svg {
+        cursor: move;
+    }
+
+    path {
+        fill: none;
+        stroke: #000;
+    }
+
+    .background {
+        stroke: none;
+        fill: #eef;
+    }
+
+    .land {
+        stroke-width: .75px;
+        pointer-events: all;
+        fill: black
+    }
+
+    .graticule {
+        stroke: #333;
+        stroke-width: .25px;
+    }
+
+    .bounds {
+        fill: #66CCFF;
+        fill-opacity: .25;
+        stroke: #6699FF;
+        stroke-width: 1px;
+        pointer-events: none;
+    }
+
+    .country:hover .bounds {
+        stroke-width: 2px;
+    }
+
+    .country:hover .land {
+        stroke-width: 1px;
+        fill: rgb(6, 245, 6)
+    }
+
+    .outline {
+        stroke: grey;
+        stroke-width: 1.5px;
+        fill: none;
+    }
+
+    .antimeridian {
+        stroke-dasharray: 5 5;
+    }
+
+    .example path.Polygon {
+        fill: url(#hatch);
+    }
+
+    .example text {
+        font-size: 11px;
+        font-family: sans-serif;
+    }
+</style>
+<div id="map"></div>
+<!-- <script src="./d3.min.js"></script>
+<script src="./topojson.min.js"></script>
+<script src="./app.min.js"></script> -->

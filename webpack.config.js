@@ -58,11 +58,7 @@ module.exports = {
                 }]
             },
             {
-                test: /\.svg$/,
-                loader: 'svg-inline-loader'
-            },
-            {
-                test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
+                test: /\.(eot|ttf|woff|woff2)(\?.+)?$/,
                 use: [
                   {
                     loader: 'url-loader'

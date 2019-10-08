@@ -3,13 +3,15 @@ import d3_demo2 from './d3_demo2'
 import d3_demo3 from './d3_demo3'
 import homepage from './homepage'
 import earth from './earth'
+import fullPage from './fullPage'
 
 const routes = {
   '/d3demo1': d3_demo1,
   '/d3demo2': d3_demo2,
   '/d3demo3': d3_demo3,
   '/earth': earth,
-  '/homepage': homepage
+  '/homepage': homepage,
+  '/fullPage': fullPage
 }
 
 class Router {

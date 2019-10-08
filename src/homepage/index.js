@@ -18,5 +18,8 @@ export default class {
         container.querySelector('.earth').addEventListener('click', () => {
             router.go('/earth')
         })
+        container.querySelector('.fullPage').addEventListener('click', () => {
+            router.go('/fullPage')
+        })
     }
 }
